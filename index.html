@@ -1,256 +1,442 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#09090d">
-<meta name="description" content="Khaled Elgendy - Frontend Developer Portfolio">
-<title>Khaled Elgendy | Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="الموقع الشخصي لخالد الجندي - Frontend Developer">
+  <title>Khaled Elgendy | Frontend Developer</title>
 
-<style>
-:root {
-  --bg: #09090d;
-  --panel: #12121a;
-  --panel2: #191923;
-  --text: #f5f5f7;
-  --muted: #a3a3b5;
-  --purple: #a78bfa;
-  --border: #292936;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, sans-serif;
-  line-height: 1.8;
-}
-a { color: inherit; text-decoration: none; }
-button { font: inherit; }
-.container { width: min(1080px, 90%); margin: auto; }
-header {
-  position: sticky; top: 0; z-index: 10;
-  background: rgba(9,9,13,.94);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(14px);
-}
-nav {
-  min-height: 76px; display: flex; align-items: center;
-  justify-content: space-between; gap: 20px;
-}
-.logo { font-size: 23px; font-weight: 800; direction: ltr; }
-.purple { color: var(--purple); }
-.navlinks { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-.navlinks a { font-size: 13px; color: var(--muted); }
-.navlinks a:hover, .navlinks a.active { color: var(--purple); }
-.lang-btn {
-  border: 1px solid var(--border); background: var(--panel);
-  color: var(--text); padding: 7px 12px; border-radius: 8px; cursor: pointer;
-}
-.hero {
-  min-height: 590px; padding: 80px 0;
-  display: grid; grid-template-columns: 1.25fr .75fr;
-  align-items: center; gap: 50px;
-}
-.eyebrow {
-  display: inline-block; border: 1px solid #514174;
-  background: #21182f; color: #d5c8ff;
-  border-radius: 30px; padding: 5px 14px;
-  font-size: 13px; margin-bottom: 20px;
-}
-h1 { font-size: clamp(38px,6vw,65px); line-height: 1.2; margin-bottom: 20px; }
-.hero p { color: var(--muted); max-width: 570px; margin-bottom: 28px; }
-.actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn {
-  display: inline-block; border: 1px solid var(--border);
-  padding: 10px 20px; border-radius: 9px; font-size: 14px;
-  font-weight: bold; transition: .2s;
-}
-.btn:hover { transform: translateY(-3px); }
-.btn-primary { background: var(--purple); color: #100b1c; border-color: var(--purple); }
-.avatar-wrap { text-align: center; }
-.avatar {
-  width: 245px; height: 245px; border-radius: 30px;
-  border: 1px solid #514174;
-  background: linear-gradient(145deg,#302342,#12121a);
-  display: flex; align-items: center; justify-content: center;
-  margin: auto; font-size: 70px; font-weight: 800; color: var(--purple);
-  box-shadow: 0 0 80px #a78bfa12;
-}
-.avatar-note { color: var(--muted); font-size: 12px; margin-top: 14px; }
-section { padding: 82px 0; border-top: 1px solid #1c1c25; }
-.section-head { margin-bottom: 32px; }
-.section-title { font-size: 34px; margin-bottom: 5px; }
-.section-desc { color: var(--muted); font-size: 14px; }
-.grid { display: grid; gap: 18px; }
-.two { grid-template-columns: repeat(2,minmax(0,1fr)); }
-.three { grid-template-columns: repeat(3,minmax(0,1fr)); }
-.card {
-  padding: 24px; border-radius: 15px;
-  background: var(--panel); border: 1px solid var(--border);
-  transition: transform .2s,border-color .2s;
-}
-.card:hover { transform: translateY(-4px); border-color: #6d529d; }
-.card h3 { margin-bottom: 9px; font-size: 18px; }
-.card p { color: var(--muted); font-size: 14px; }
-.icon {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 43px; height: 43px; border-radius: 12px;
-  background: #241b34; color: var(--purple);
-  font-weight: bold; margin-bottom: 17px;
-}
-.skill-top { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
-.skill-top span { color: var(--purple); font-size: 12px; }
-.project-label { color: var(--purple); font-size: 12px; }
-.project-card h3 { margin-top: 9px; }
-.project-links { display: flex; gap: 18px; margin-top: 18px; font-size: 13px; }
-.project-links a { color: var(--purple); }
-.project-links a:hover { text-decoration: underline; }
-.notice {
-  border: 1px solid #514174; background: #171321;
-  color: #cfc4e8; border-radius: 10px;
-  padding: 12px 15px; font-size: 13px; margin-bottom: 20px;
-}
-.resume {
-  padding: 38px; border-radius: 18px; text-align: center;
-  background: var(--panel); border: 1px solid var(--border);
-}
-.resume p { color: var(--muted); margin: 12px auto 22px; max-width: 620px; }
-.contact-item { overflow-wrap: anywhere; }
-.contact-item small { display: block; color: var(--muted); margin-bottom: 5px; }
-.contact-item a { color: var(--purple); }
-footer {
-  border-top: 1px solid var(--border); padding: 25px 0;
-  text-align: center; color: var(--muted); font-size: 13px;
-}
-[dir="ltr"] .hero, [dir="ltr"] .card { text-align: left; }
-[dir="ltr"] .section-head { text-align: left; }
-[dir="ltr"] .navlinks { direction: ltr; }
-[dir="ltr"] .hero p { margin-right: 0; }
-[dir="ltr"] .actions, [dir="ltr"] .project-links { justify-content: flex-start; }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-@media(max-width:760px) {
-  nav { padding: 14px 0; align-items: flex-start; flex-wrap: wrap; }
-  .navlinks { gap: 10px 15px; }
-  .hero { grid-template-columns: 1fr; text-align: center; gap: 35px; padding: 60px 0; }
-  .hero p { margin-left: auto; margin-right: auto; }
-  .actions { justify-content: center; }
-  .avatar { width: 190px; height: 190px; font-size: 56px; }
-  .two, .three { grid-template-columns: 1fr; }
-  section { padding: 60px 0; }
-  .section-title { font-size: 29px; }
-  .resume { padding: 28px 18px; }
-  [dir="ltr"] .hero { text-align: center; }
-  [dir="ltr"] .hero p { margin-left: auto; margin-right: auto; }
-  [dir="ltr"] .actions { justify-content: center; }
-}
-</style>
+    :root {
+      --bg: #09090d;
+      --panel: #12121a;
+      --text: #f5f5f7;
+      --muted: #a1a1b0;
+      --purple: #a78bfa;
+      --border: #282832;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(9, 9, 13, .94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .logo span,
+    .accent {
+      color: var(--purple);
+    }
+
+    .links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .links a:hover {
+      color: var(--purple);
+    }
+
+    .hero {
+      min-height: 570px;
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      align-items: center;
+      gap: 50px;
+      padding-top: 65px;
+      padding-bottom: 65px;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid #514174;
+      background: #21182f;
+      color: #c4b5fd;
+      border-radius: 30px;
+      padding: 5px 14px;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero p,
+    .section-desc {
+      color: var(--muted);
+    }
+
+    .hero p {
+      max-width: 560px;
+      margin-bottom: 28px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 22px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: var(--purple);
+      color: #100b1c;
+      border-color: var(--purple);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      transition: .2s;
+    }
+
+    .profile {
+      width: 250px;
+      height: 250px;
+      border-radius: 28px;
+      margin: auto;
+      border: 1px solid #514174;
+      background: linear-gradient(145deg, #302342, #12121a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 75px;
+      font-weight: bold;
+      color: var(--purple);
+      box-shadow: 0 0 65px #a78bfa12;
+    }
+
+    section {
+      padding: 85px 0;
+      border-top: 1px solid #1c1c25;
+    }
+
+    .section-title {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .section-desc {
+      margin-bottom: 35px;
+    }
+
+    .about-grid,
+    .skills-grid,
+    .projects-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 25px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .skill {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .skill span {
+      color: var(--purple);
+      font-size: 13px;
+    }
+
+    .project-label {
+      color: var(--purple);
+      font-size: 12px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--purple);
+    }
+
+    .resume {
+      text-align: center;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 40px 20px;
+    }
+
+    .resume p {
+      color: var(--muted);
+      margin: 12px 0 22px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .contact-item {
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-item small {
+      display: block;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 15px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .links {
+        gap: 12px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 35px;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .actions {
+        justify-content: center;
+      }
+
+      .profile {
+        width: 190px;
+        height: 190px;
+        font-size: 60px;
+      }
+
+      .about-grid,
+      .skills-grid,
+      .projects-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
+
 <header>
   <nav class="container">
-    <a class="logo" href="#home">Khaled<span class="purple">.</span></a>
-    <div class="navlinks">
-      <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
-      <a href="#about" data-ar="عني" data-en="About">عني</a>
-      <a href="#skills" data-ar="المهارات" data-en="Skills">المهارات</a>
-      <a href="#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a>
-      <a href="#resume" data-ar="السيرة الذاتية" data-en="Resume">السيرة الذاتية</a>
-      <a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
-      <button class="lang-btn" id="langBtn" type="button">English</button>
+    <a class="logo" href="#home">Khaled<span>.</span></a>
+
+    <div class="links">
+      <a href="#home">الرئيسية</a>
+      <a href="#about">عني</a>
+      <a href="#skills">المهارات</a>
+      <a href="#projects">المشاريع</a>
+      <a href="#resume">السيرة الذاتية</a>
+      <a href="#contact">تواصل</a>
     </div>
   </nav>
 </header>
 
 <main>
+
   <div class="container hero" id="home">
     <div>
-      <span class="eyebrow" data-ar="مطور واجهات ويب" data-en="Frontend Developer">مطور واجهات ويب</span>
-      <h1>
-        <span data-ar="أهلاً، أنا" data-en="Hi, I'm">أهلاً، أنا</span>
-        <span class="purple" data-ar="خالد الجندي" data-en="Khaled Elgendy">خالد الجندي</span>
-      </h1>
-      <p data-ar="طالب بالفرقة الرابعة في معهد الدلتا العالي، مهتم بتطوير واجهات المواقع وبناء تجارب استخدام عصرية وسريعة ومتوافقة مع مختلف الشاشات. أعمل باستمرار على تطوير مهاراتي وبناء مشروعات عملية." data-en="A fourth-year student at Delta Higher Institute, interested in frontend development and building modern, responsive user experiences. I am continuously improving my skills through practical projects.">
-        طالب بالفرقة الرابعة في معهد الدلتا العالي، مهتم بتطوير واجهات المواقع وبناء تجارب استخدام عصرية وسريعة ومتوافقة مع مختلف الشاشات. أعمل باستمرار على تطوير مهاراتي وبناء مشروعات عملية.
+      <span class="tag">Frontend Developer</span>
+      <h1>أهلاً، أنا <span class="accent">خالد الجندي</span></h1>
+      <p>
+        طالب بالفرقة الرابعة في معهد الدلتا العالي،
+        مهتم بتطوير واجهات المواقع وبناء تجارب استخدام
+        عصرية وسريعة ومتوافقة مع جميع الشاشات.
       </p>
+
       <div class="actions">
-        <a class="btn btn-primary" href="#projects" data-ar="شاهد مشاريعي ↙" data-en="View Projects ↙">شاهد مشاريعي ↙</a>
-        <a class="btn" href="#contact" data-ar="تواصل معي" data-en="Contact Me">تواصل معي</a>
+        <a class="btn btn-primary" href="#projects">شاهد مشاريعي</a>
+        <a class="btn" href="#contact">تواصل معي</a>
       </div>
     </div>
-    <div class="avatar-wrap">
-      <div class="avatar" aria-label="Khaled Elgendy">KE</div>
-      <p class="avatar-note" data-ar="أضف صورتك الشخصية بدل الشعار عند توفرها" data-en="Replace this monogram with your profile photo when available">أضف صورتك الشخصية بدل الشعار عند توفرها</p>
-    </div>
+
+    <div class="profile" aria-label="شعار خالد">KE</div>
   </div>
 
   <section id="about">
     <div class="container">
-      <div class="section-head">
-        <h2 class="section-title" data-ar="نبذة <span class='purple'>عني</span>" data-en="About <span class='purple'>Me</span>">نبذة <span class="purple">عني</span></h2>
-        <p class="section-desc" data-ar="تعرف على خلفيتي واهتماماتي." data-en="A little about my background and interests.">تعرف على خلفيتي واهتماماتي.</p>
-      </div>
-      <div class="grid two">
-        <article class="card">
-          <div class="icon">01</div>
-          <h3 data-ar="من أنا؟" data-en="Who Am I?">من أنا؟</h3>
-          <p data-ar="أنا خالد محمد معوض خليل، طالب بالفرقة الرابعة في معهد الدلتا العالي. أهتم بتطوير الويب وتصميم واجهات سهلة الاستخدام، وأسعى إلى تحويل الأفكار إلى صفحات منظمة ومتجاوبة." data-en="I am Khaled Mohamed Moawad Khalil, a fourth-year student at Delta Higher Institute. I am interested in web development and building clean, user-friendly, responsive interfaces.">
-            أنا خالد محمد معوض خليل، طالب بالفرقة الرابعة في معهد الدلتا العالي. أهتم بتطوير الويب وتصميم واجهات سهلة الاستخدام، وأسعى إلى تحويل الأفكار إلى صفحات منظمة ومتجاوبة.
+      <h2 class="section-title">نبذة <span class="accent">عني</span></h2>
+      <p class="section-desc">تعرف عليّ وعلى اهتماماتي.</p>
+
+      <div class="about-grid">
+        <div class="card">
+          <h3>من أنا؟</h3>
+          <p>
+            أنا خالد محمد معوض خليل، طالب بالفرقة الرابعة
+            في معهد الدلتا العالي. أعمل على تطوير مهاراتي
+            في تصميم وبرمجة واجهات المواقع، وأسعى إلى
+            بناء مشاريع عملية وتطوير خبرتي باستمرار.
           </p>
-        </article>
-        <article class="card">
-          <div class="icon">02</div>
-          <h3 data-ar="هدفي" data-en="My Goal">هدفي</h3>
-          <p data-ar="تطوير مهاراتي في HTML وCSS وJavaScript، وبناء مشاريع عملية تساعدني على التقدم في مجال Frontend Development." data-en="To strengthen my HTML, CSS, and JavaScript skills and build practical projects as I progress in frontend development.">
-            تطوير مهاراتي في HTML وCSS وJavaScript، وبناء مشاريع عملية تساعدني على التقدم في مجال Frontend Development.
+        </div>
+
+        <div class="card">
+          <h3>هدفي</h3>
+          <p>
+            تطوير مواقع سهلة الاستخدام، منظمة، ومتجاوبة
+            مع الموبايل والكمبيوتر، والاستمرار في تعلم
+            التقنيات الحديثة في مجال تطوير الويب.
           </p>
-        </article>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="skills">
     <div class="container">
-      <div class="section-head">
-        <h2 class="section-title" data-ar="المهارات <span class='purple'>التقنية</span>" data-en="Technical <span class='purple'>Skills</span>">المهارات <span class="purple">التقنية</span></h2>
-        <p class="section-desc" data-ar="التقنيات التي أتعلمها وأطور مستواي فيها." data-en="Technologies I am learning and practicing.">التقنيات التي أتعلمها وأطور مستواي فيها.</p>
-      </div>
-      <div class="grid three">
-        <article class="card"><div class="icon">H</div><div class="skill-top"><h3>HTML5</h3><span data-ar="تدريب" data-en="Practice">تدريب</span></div><p data-ar="بناء هيكل صفحات الويب." data-en="Structuring web pages.">بناء هيكل صفحات الويب.</p></article>
-        <article class="card"><div class="icon">C</div><div class="skill-top"><h3>CSS3</h3><span data-ar="تدريب" data-en="Practice">تدريب</span></div><p data-ar="التنسيق والتصميم المتجاوب." data-en="Styling and responsive layouts.">التنسيق والتصميم المتجاوب.</p></article>
-        <article class="card"><div class="icon">JS</div><div class="skill-top"><h3>JavaScript</h3><span data-ar="قيد التعلم" data-en="Learning">قيد التعلم</span></div><p data-ar="إضافة التفاعل للصفحات." data-en="Adding interactivity to pages.">إضافة التفاعل للصفحات.</p></article>
-        <article class="card"><div class="icon">B</div><div class="skill-top"><h3>Bootstrap</h3><span data-ar="قيد التعلم" data-en="Learning">قيد التعلم</span></div><p data-ar="تطوير واجهات متجاوبة." data-en="Building responsive interfaces.">تطوير واجهات متجاوبة.</p></article>
-        <article class="card"><div class="icon">G</div><div class="skill-top"><h3>Git & GitHub</h3><span data-ar="تدريب" data-en="Practice">تدريب</span></div><p data-ar="إدارة ملفات المشاريع ونشرها." data-en="Managing and publishing project files.">إدارة ملفات المشاريع ونشرها.</p></article>
-        <article class="card"><div class="icon">UI</div><div class="skill-top"><h3>Responsive UI</h3><span data-ar="تدريب" data-en="Practice">تدريب</span></div><p data-ar="تحسين تجربة الاستخدام على الشاشات المختلفة." data-en="Improving usability across screen sizes.">تحسين تجربة الاستخدام على الشاشات المختلفة.</p></article>
+      <h2 class="section-title">المهارات <span class="accent">التقنية</span></h2>
+      <p class="section-desc">التقنيات التي أتعلمها وأعمل على تطويرها.</p>
+
+      <div class="skills-grid">
+        <div class="card skill"><h3>HTML5</h3><span>Frontend</span></div>
+        <div class="card skill"><h3>CSS3</h3><span>Frontend</span></div>
+        <div class="card skill"><h3>JavaScript</h3><span>Learning</span></div>
+        <div class="card skill"><h3>Bootstrap</h3><span>Learning</span></div>
+        <div class="card skill"><h3>Git & GitHub</h3><span>Learning</span></div>
+        <div class="card skill"><h3>Responsive Design</h3><span>Practice</span></div>
       </div>
     </div>
   </section>
 
   <section id="projects">
     <div class="container">
-      <div class="section-head">
-        <h2 class="section-title" data-ar="مشاريعي <span class='purple'>المختارة</span>" data-en="Selected <span class='purple'>Projects</span>">مشاريعي <span class="purple">المختارة</span></h2>
-        <p class="section-desc" data-ar="نماذج تدريبية وأفكار قيد التطوير." data-en="Practice work and ideas in development.">نماذج تدريبية وأفكار قيد التطوير.</p>
-      </div>
-      <div class="notice" data-ar="ملاحظة: وضعت حالة المشاريع بوضوح. حدّث هذه البيانات بعد اكتمال كل مشروع." data-en="Note: Project status is stated clearly. Update these details as your projects progress.">
-        ملاحظة: وضعت حالة المشاريع بوضوح. حدّث هذه البيانات بعد اكتمال كل مشروع.
-      </div>
-      <div class="grid two">
-        <article class="card project-card">
-          <span class="project-label">01 / Portfolio</span>
-          <h3 data-ar="موقعي الشخصي" data-en="Personal Portfolio">موقعي الشخصي</h3>
-          <p data-ar="موقع للتعريف بي وعرض مهاراتي وروابط مشاريعي ووسائل التواصل." data-en="A personal website presenting my profile, skills, projects, and contact details.">موقع للتعريف بي وعرض مهاراتي وروابط مشاريعي ووسائل التواصل.</p>
+      <h2 class="section-title">مشاريعي <span class="accent">الأخيرة</span></h2>
+      <p class="section-desc">
+        نماذج لمشاريع أعمل عليها وأطورها. حدّث الروابط
+        وحالة كل مشروع قبل استخدامه في التقديم الوظيفي.
+      </p>
+
+      <div class="projects-grid">
+        <article class="card">
+          <span class="project-label">Personal Website</span>
+          <h3>Personal Portfolio</h3>
+          <p>
+            موقع شخصي للتعريف بي وعرض مهاراتي ومشاريعي
+            وطرق التواصل معي.
+          </p>
           <div class="project-links">
-            <a href="https://github.com/KhaledElGendy27/dina-portfolio" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://github.com/KhaledEIGendy27/dina-portfolio"
+               target="_blank" rel="noopener">GitHub ↗</a>
           </div>
         </article>
-        <article class="card project-card">
-          <span class="project-label">02 / Concept</span>
+
+        <article class="card">
+          <span class="project-label">Practice Project</span>
           <h3>Khaled Food</h3>
-          <p data-ar="فكرة منصة تجريبية لعرض المطاعم والمتاجر والمنتجات الغذائية. المشروع قيد التطوير وليس خدمة طلبات فعلية بعد." data-en="A concept for a food platform featuring restaurants, shops, and food products. It is in development and does not yet process real orders.">فكرة منصة تجريبية لعرض المطاعم والمتاجر والمنتجات الغذائية. المشروع قيد التطوير وليس خدمة طلبات فعلية بعد.</p>
+          <p>
+            فكرة منصة تجريبية لعرض المطاعم والسوبر ماركت
+            والحلويات والمشروبات. المشروع قيد التطوير.
+          </p>
           <div class="project-links">
-            <a href="https://github.com/KhaledElGendy27" target="_blank" rel="noopener" data-ar="حساب GitHub ↗" data-en="GitHub Profile ↗">حساب GitHub ↗</a>
+            <a href="https://github.com/KhaledEIGendy27"
+               target="_blank" rel="noopener">حساب GitHub ↗</a>
           </div>
         </article>
       </div>
@@ -260,58 +446,47 @@ footer {
   <section id="resume">
     <div class="container">
       <div class="resume">
-        <h2 class="section-title" data-ar="السيرة <span class='purple'>الذاتية</span>" data-en="My <span class='purple'>Resume</span>">السيرة <span class="purple">الذاتية</span></h2>
-        <p data-ar="ملف السيرة الذاتية قابل للإضافة هنا بعد تجهيزه. لم تتم إضافة ملف وهمي." data-en="A real CV file can be linked here once prepared. No placeholder document has been added.">ملف السيرة الذاتية قابل للإضافة هنا بعد تجهيزه. لم تتم إضافة ملف وهمي.</p>
-        <a href="#contact" class="btn btn-primary" data-ar="تواصل معي" data-en="Contact Me">تواصل معي</a>
+        <h2 class="section-title">السيرة <span class="accent">الذاتية</span></h2>
+        <p>
+          يمكنك التواصل معي للحصول على معلوماتي الأكاديمية
+          ومهاراتي. أضف ملف CV حقيقيًا هنا عند تجهيزه.
+        </p>
+        <a class="btn btn-primary" href="#contact">تواصل معي</a>
       </div>
     </div>
   </section>
 
   <section id="contact">
     <div class="container">
-      <div class="section-head">
-        <h2 class="section-title" data-ar="لنتواصل <span class='purple'>معًا</span>" data-en="Let's <span class='purple'>Connect</span>">لنتواصل <span class="purple">معًا</span></h2>
-        <p class="section-desc" data-ar="يمكنك التواصل معي عبر البريد الإلكتروني أو GitHub." data-en="Reach me by email or through GitHub.">يمكنك التواصل معي عبر البريد الإلكتروني أو GitHub.</p>
-      </div>
-      <div class="grid two">
-        <article class="card contact-item">
-          <small data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</small>
-          <a href="mailto:kaldhmohamed11@gmail.com">kaldhmohamed11@gmail.com</a>
-        </article>
-        <article class="card contact-item">
+      <h2 class="section-title">خلينا <span class="accent">نتواصل</span></h2>
+      <p class="section-desc">يسعدني التواصل بخصوص المشاريع والتعاون.</p>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <small>البريد الإلكتروني</small>
+          <a href="mailto:kaldhmohamed11@gmail.com">
+            kaldhmohamed11@gmail.com
+          </a>
+        </div>
+
+        <div class="contact-item">
           <small>GitHub</small>
-          <a href="https://github.com/KhaledElGendy27" target="_blank" rel="noopener">KhaledElGendy27 ↗</a>
-        </article>
+          <a href="https://github.com/KhaledEIGendy27"
+             target="_blank" rel="noopener">
+            KhaledEIGendy27 ↗
+          </a>
+        </div>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer>
   <div class="container">
-    <span data-ar="© 2026 خالد الجندي — جميع الحقوق محفوظة." data-en="© 2026 Khaled Elgendy — All rights reserved.">© 2026 خالد الجندي — جميع الحقوق محفوظة.</span>
+    © 2026 Khaled Elgendy — جميع الحقوق محفوظة.
   </div>
 </footer>
 
-<script>
-const langBtn = document.getElementById("langBtn");
-let currentLang = "ar";
-
-langBtn.addEventListener("click", () => {
-  currentLang = currentLang === "ar" ? "en" : "ar";
-  document.documentElement.lang = currentLang;
-  document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
-  langBtn.textContent = currentLang === "ar" ? "English" : "العربية";
-
-  document.querySelectorAll("[data-ar][data-en]").forEach(element => {
-    const value = element.dataset[currentLang];
-    if (value.includes("<span")) {
-      element.innerHTML = value;
-    } else {
-      element.textContent = value;
-    }
-  });
-});
-</script>
 </body>
-                                </html>
+</html>
