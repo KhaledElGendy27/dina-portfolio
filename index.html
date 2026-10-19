@@ -1,326 +1,522 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="الموقع الشخصي لخالد الجندي - Frontend Developer">
-  <title>Khaled Elgendy | Frontend Developer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="الموقع الشخصي لخالد الجندي - Frontend Developer">
+<title>Khaled Elgendy | Frontend Developer</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
-    :root {
-      --bg: #09090d;
-      --panel: #12121a;
-      --text: #f5f5f7;
-      --muted: #a1a1b0;
-      --purple: #a78bfa;
-      --border: #282832;
-    }
+:root {
+  --bg: #09090d;
+  --panel: #12121a;
+  --text: #f5f5f7;
+  --muted: #a1a1b0;
+  --purple: #a78bfa;
+  --border: #282832;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.8;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-    .container {
-      width: min(1100px, 90%);
-      margin: auto;
-    }
+.container {
+  width: min(1100px, 90%);
+  margin: auto;
+}
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(9, 9, 13, .94);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-    }
+/* Animated background */
+body::before {
+  content: "";
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  top: 10%;
+  right: -180px;
+  background: #a78bfa;
+  opacity: .07;
+  filter: blur(120px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  animation: glow 8s ease-in-out infinite alternate;
+}
 
-    nav {
-      min-height: 75px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
+body::after {
+  content: "";
+  position: fixed;
+  width: 350px;
+  height: 350px;
+  bottom: 0;
+  left: -180px;
+  background: #7c3aed;
+  opacity: .06;
+  filter: blur(120px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  animation: glow 10s ease-in-out infinite alternate-reverse;
+}
 
-    .logo {
-      font-size: 23px;
-      font-weight: bold;
-    }
+@keyframes glow {
+  from { transform: translateY(-30px) scale(.9); }
+  to { transform: translateY(50px) scale(1.15); }
+}
 
-    .logo span,
-    .accent {
-      color: var(--purple);
-    }
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(9, 9, 13, .88);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(15px);
+}
 
-    .links {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
+nav {
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
 
-    .links a {
-      color: var(--muted);
-      font-size: 14px;
-    }
+.logo {
+  font-size: 23px;
+  font-weight: bold;
+}
 
-    .links a:hover {
-      color: var(--purple);
-    }
+.logo span,
+.accent {
+  color: var(--purple);
+}
 
-    .hero {
-      min-height: 570px;
-      display: grid;
-      grid-template-columns: 1.3fr .7fr;
-      align-items: center;
-      gap: 50px;
-      padding-top: 65px;
-      padding-bottom: 65px;
-    }
+.links {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
 
-    .tag {
-      display: inline-block;
-      border: 1px solid #514174;
-      background: #21182f;
-      color: #c4b5fd;
-      border-radius: 30px;
-      padding: 5px 14px;
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
+.links a {
+  color: var(--muted);
+  font-size: 14px;
+  transition: color .3s, transform .3s;
+}
 
-    h1 {
-      font-size: clamp(38px, 6vw, 66px);
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
+.links a:hover {
+  color: var(--purple);
+  transform: translateY(-2px);
+}
 
-    .hero p,
-    .section-desc {
-      color: var(--muted);
-    }
+/* Hero */
+.hero {
+  min-height: 570px;
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  align-items: center;
+  gap: 50px;
+  padding-top: 65px;
+  padding-bottom: 65px;
+}
 
-    .hero p {
-      max-width: 560px;
-      margin-bottom: 28px;
-    }
+.hero-content {
+  animation: slideIn .9s ease both;
+}
 
-    .actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+.tag {
+  display: inline-block;
+  border: 1px solid #514174;
+  background: #21182f;
+  color: #c4b5fd;
+  border-radius: 30px;
+  padding: 5px 14px;
+  font-size: 13px;
+  margin-bottom: 18px;
+  animation: tagPulse 3s infinite;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 11px 22px;
-      border-radius: 9px;
-      border: 1px solid var(--border);
-      font-weight: bold;
-      font-size: 14px;
-    }
+@keyframes tagPulse {
+  0%, 100% { box-shadow: 0 0 0 transparent; }
+  50% { box-shadow: 0 0 18px #a78bfa30; }
+}
 
-    .btn-primary {
-      background: var(--purple);
-      color: #100b1c;
-      border-color: var(--purple);
-    }
+h1 {
+  font-size: clamp(38px, 6vw, 66px);
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
 
-    .btn:hover {
-      transform: translateY(-2px);
-      transition: .2s;
-    }
+.hero p,
+.section-desc {
+  color: var(--muted);
+}
 
-    .profile {
-      width: 250px;
-      height: 250px;
-      border-radius: 28px;
-      margin: auto;
-      border: 1px solid #514174;
-      background: linear-gradient(145deg, #302342, #12121a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 75px;
-      font-weight: bold;
-      color: var(--purple);
-      box-shadow: 0 0 65px #a78bfa12;
-    }
+.hero p {
+  max-width: 560px;
+  margin-bottom: 28px;
+}
 
-    section {
-      padding: 85px 0;
-      border-top: 1px solid #1c1c25;
-    }
+.typing {
+  color: var(--purple);
+  border-left: 2px solid var(--purple);
+  padding-left: 5px;
+  white-space: nowrap;
+  animation: cursorBlink .8s infinite;
+}
 
-    .section-title {
-      font-size: 34px;
-      margin-bottom: 10px;
-    }
+@keyframes cursorBlink {
+  50% { border-color: transparent; }
+}
 
-    .section-desc {
-      margin-bottom: 35px;
-    }
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
 
-    .about-grid,
-    .skills-grid,
-    .projects-grid {
-      display: grid;
-      gap: 20px;
-    }
+.btn {
+  display: inline-block;
+  padding: 11px 22px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  font-weight: bold;
+  font-size: 14px;
+  transition: .3s;
+}
 
-    .about-grid {
-      grid-template-columns: 1fr 1fr;
-    }
+.btn-primary {
+  background: var(--purple);
+  color: #100b1c;
+  border-color: var(--purple);
+}
 
-    .skills-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px #a78bfa25;
+}
 
-    .projects-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+.profile-wrap {
+  display: flex;
+  justify-content: center;
+  animation: float 4s ease-in-out infinite;
+}
 
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 25px;
-    }
+.profile {
+  width: 250px;
+  height: 250px;
+  border-radius: 28px;
+  border: 1px solid #514174;
+  background: linear-gradient(145deg, #302342, #12121a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 75px;
+  font-weight: bold;
+  color: var(--purple);
+  box-shadow: 0 0 65px #a78bfa12;
+  position: relative;
+  transition: .4s;
+}
 
-    .card h3 {
-      margin-bottom: 10px;
-    }
+.profile::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border: 1px solid #a78bfa50;
+  border-radius: 35px;
+  animation: rotateBorder 8s linear infinite;
+}
 
-    .card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
+.profile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 55px #a78bfa35;
+}
 
-    .skill {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-    }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-13px); }
+}
 
-    .skill span {
-      color: var(--purple);
-      font-size: 13px;
-    }
+@keyframes rotateBorder {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
 
-    .project-label {
-      color: var(--purple);
-      font-size: 12px;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    .project-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 18px;
-      font-size: 13px;
-      color: var(--purple);
-    }
+/* Sections */
+section {
+  padding: 85px 0;
+  border-top: 1px solid #1c1c25;
+  scroll-margin-top: 75px;
+}
 
-    .resume {
-      text-align: center;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 40px 20px;
-    }
+.section-title {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
 
-    .resume p {
-      color: var(--muted);
-      margin: 12px 0 22px;
-    }
+.section-desc {
+  margin-bottom: 35px;
+}
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
+.about-grid,
+.skills-grid,
+.projects-grid {
+  display: grid;
+  gap: 20px;
+}
 
-    .contact-item {
-      padding: 20px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow-wrap: anywhere;
-    }
+.about-grid {
+  grid-template-columns: 1fr 1fr;
+}
 
-    .contact-item small {
-      display: block;
-      color: var(--muted);
-    }
+.skills-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
 
-    footer {
-      padding: 25px 0;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
+.projects-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
 
-    @media (max-width: 700px) {
-      nav {
-        padding: 15px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
+.card {
+  background: rgba(18, 18, 26, .88);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 25px;
+  transition: transform .35s, border-color .35s, box-shadow .35s;
+}
 
-      .links {
-        gap: 12px;
-      }
+.card:hover {
+  transform: translateY(-8px);
+  border-color: #8b5cf6;
+  box-shadow: 0 12px 35px #a78bfa12;
+}
 
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 35px;
-      }
+.card h3 {
+  margin-bottom: 10px;
+}
 
-      .hero p {
-        margin-left: auto;
-        margin-right: auto;
-      }
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+}
 
-      .actions {
-        justify-content: center;
-      }
+.skill {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
 
-      .profile {
-        width: 190px;
-        height: 190px;
-        font-size: 60px;
-      }
+.skill span {
+  color: var(--purple);
+  font-size: 13px;
+}
 
-      .about-grid,
-      .skills-grid,
-      .projects-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
+.skill h3 {
+  margin: 0;
+}
 
-      section {
-        padding: 60px 0;
-      }
-    }
-  </style>
+.project-label {
+  color: var(--purple);
+  font-size: 12px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.project-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--purple);
+}
+
+.project-links a:hover {
+  text-decoration: underline;
+}
+
+/* Resume */
+.resume {
+  text-align: center;
+  background: linear-gradient(135deg, #171322, #12121a);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 40px 20px;
+  transition: .3s;
+}
+
+.resume:hover {
+  border-color: #8b5cf6;
+}
+
+.resume p {
+  color: var(--muted);
+  margin: 12px 0 22px;
+}
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.contact-item {
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+  transition: .3s;
+}
+
+.contact-item:hover {
+  border-color: var(--purple);
+  transform: translateY(-4px);
+}
+
+.contact-item small {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Back to top */
+#topBtn {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  width: 45px;
+  height: 45px;
+  border: 1px solid #514174;
+  border-radius: 12px;
+  background: #21182f;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: .3s;
+  z-index: 99;
+}
+
+#topBtn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#topBtn:hover {
+  background: var(--purple);
+  color: #100b1c;
+}
+
+/* Footer */
+footer {
+  padding: 25px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  nav {
+    padding: 15px 0;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .links {
+    gap: 12px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 35px;
+  }
+
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .profile {
+    width: 190px;
+    height: 190px;
+    font-size: 60px;
+  }
+
+  .about-grid,
+  .skills-grid,
+  .projects-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 29px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -343,13 +539,19 @@
 <main>
 
   <div class="container hero" id="home">
-    <div>
-      <span class="tag">Frontend Developer</span>
-      <h1>أهلاً، أنا <span class="accent">خالد الجندي</span></h1>
+    <div class="hero-content">
+      <span class="tag">مرحبًا بك في موقعي الشخصي</span>
+
+      <h1>
+        أهلاً، أنا <span class="accent">خالد الجندي</span>
+      </h1>
+
       <p>
-        طالب بالفرقة الرابعة في معهد الدلتا العالي،
+        أنا طالب بالفرقة الرابعة في معهد الدلتا العالي،
         مهتم بتطوير واجهات المواقع وبناء تجارب استخدام
         عصرية وسريعة ومتوافقة مع جميع الشاشات.
+        <br><br>
+        <strong class="typing" id="typing"></strong>
       </p>
 
       <div class="actions">
@@ -358,16 +560,20 @@
       </div>
     </div>
 
-    <div class="profile" aria-label="شعار خالد">KE</div>
+    <div class="profile-wrap">
+      <div class="profile" aria-label="شعار خالد">KE</div>
+    </div>
   </div>
 
   <section id="about">
     <div class="container">
-      <h2 class="section-title">نبذة <span class="accent">عني</span></h2>
-      <p class="section-desc">تعرف عليّ وعلى اهتماماتي.</p>
+      <h2 class="section-title reveal">
+        نبذة <span class="accent">عني</span>
+      </h2>
+      <p class="section-desc reveal">تعرف عليّ وعلى اهتماماتي.</p>
 
       <div class="about-grid">
-        <div class="card">
+        <div class="card reveal">
           <h3>من أنا؟</h3>
           <p>
             أنا خالد محمد معوض خليل، طالب بالفرقة الرابعة
@@ -377,7 +583,7 @@
           </p>
         </div>
 
-        <div class="card">
+        <div class="card reveal">
           <h3>هدفي</h3>
           <p>
             تطوير مواقع سهلة الاستخدام، منظمة، ومتجاوبة
@@ -391,30 +597,48 @@
 
   <section id="skills">
     <div class="container">
-      <h2 class="section-title">المهارات <span class="accent">التقنية</span></h2>
-      <p class="section-desc">التقنيات التي أتعلمها وأعمل على تطويرها.</p>
+      <h2 class="section-title reveal">
+        المهارات <span class="accent">التقنية</span>
+      </h2>
+      <p class="section-desc reveal">
+        التقنيات التي أتعلمها وأعمل على تطويرها.
+      </p>
 
       <div class="skills-grid">
-        <div class="card skill"><h3>HTML5</h3><span>Frontend</span></div>
-        <div class="card skill"><h3>CSS3</h3><span>Frontend</span></div>
-        <div class="card skill"><h3>JavaScript</h3><span>Learning</span></div>
-        <div class="card skill"><h3>Bootstrap</h3><span>Learning</span></div>
-        <div class="card skill"><h3>Git & GitHub</h3><span>Learning</span></div>
-        <div class="card skill"><h3>Responsive Design</h3><span>Practice</span></div>
+        <div class="card skill reveal">
+          <h3>HTML5</h3><span>Frontend</span>
+        </div>
+        <div class="card skill reveal">
+          <h3>CSS3</h3><span>Frontend</span>
+        </div>
+        <div class="card skill reveal">
+          <h3>JavaScript</h3><span>Learning</span>
+        </div>
+        <div class="card skill reveal">
+          <h3>Bootstrap</h3><span>Learning</span>
+        </div>
+        <div class="card skill reveal">
+          <h3>Git & GitHub</h3><span>Learning</span>
+        </div>
+        <div class="card skill reveal">
+          <h3>Responsive Design</h3><span>Practice</span>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="projects">
     <div class="container">
-      <h2 class="section-title">مشاريعي <span class="accent">الأخيرة</span></h2>
-      <p class="section-desc">
-        نماذج لمشاريع أعمل عليها وأطورها. حدّث الروابط
-        وحالة كل مشروع قبل استخدامه في التقديم الوظيفي.
+      <h2 class="section-title reveal">
+        مشاريعي <span class="accent">الأخيرة</span>
+      </h2>
+      <p class="section-desc reveal">
+        نماذج لمشاريع أعمل عليها وأطورها. المشاريع
+        التجريبية موضحة بوضوح.
       </p>
 
       <div class="projects-grid">
-        <article class="card">
+        <article class="card reveal">
           <span class="project-label">Personal Website</span>
           <h3>Personal Portfolio</h3>
           <p>
@@ -423,11 +647,13 @@
           </p>
           <div class="project-links">
             <a href="https://github.com/KhaledEIGendy27/dina-portfolio"
-               target="_blank" rel="noopener">GitHub ↗</a>
+               target="_blank" rel="noopener noreferrer">
+              GitHub ↗
+            </a>
           </div>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <span class="project-label">Practice Project</span>
           <h3>Khaled Food</h3>
           <p>
@@ -436,7 +662,9 @@
           </p>
           <div class="project-links">
             <a href="https://github.com/KhaledEIGendy27"
-               target="_blank" rel="noopener">حساب GitHub ↗</a>
+               target="_blank" rel="noopener noreferrer">
+              حساب GitHub ↗
+            </a>
           </div>
         </article>
       </div>
@@ -445,11 +673,13 @@
 
   <section id="resume">
     <div class="container">
-      <div class="resume">
-        <h2 class="section-title">السيرة <span class="accent">الذاتية</span></h2>
+      <div class="resume reveal">
+        <h2 class="section-title">
+          السيرة <span class="accent">الذاتية</span>
+        </h2>
         <p>
           يمكنك التواصل معي للحصول على معلوماتي الأكاديمية
-          ومهاراتي. أضف ملف CV حقيقيًا هنا عند تجهيزه.
+          ومهاراتي. سأضيف ملف السيرة الذاتية عند تجهيزه.
         </p>
         <a class="btn btn-primary" href="#contact">تواصل معي</a>
       </div>
@@ -458,21 +688,25 @@
 
   <section id="contact">
     <div class="container">
-      <h2 class="section-title">خلينا <span class="accent">نتواصل</span></h2>
-      <p class="section-desc">يسعدني التواصل بخصوص المشاريع والتعاون.</p>
+      <h2 class="section-title reveal">
+        خلينا <span class="accent">نتواصل</span>
+      </h2>
+      <p class="section-desc reveal">
+        يسعدني التواصل بخصوص المشاريع والتعاون.
+      </p>
 
       <div class="contact-grid">
-        <div class="contact-item">
+        <div class="contact-item reveal">
           <small>البريد الإلكتروني</small>
           <a href="mailto:kaldhmohamed11@gmail.com">
             kaldhmohamed11@gmail.com
           </a>
         </div>
 
-        <div class="contact-item">
+        <div class="contact-item reveal">
           <small>GitHub</small>
           <a href="https://github.com/KhaledEIGendy27"
-             target="_blank" rel="noopener">
+             target="_blank" rel="noopener noreferrer">
             KhaledEIGendy27 ↗
           </a>
         </div>
@@ -487,6 +721,88 @@
     © 2026 Khaled Elgendy — جميع الحقوق محفوظة.
   </div>
 </footer>
+
+<button id="topBtn" aria-label="الرجوع إلى أعلى الصفحة"
+        title="الرجوع للأعلى">↑</button>
+
+<script>
+// ظهور العناصر تدريجيًا عند الوصول إليها
+const revealElements = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  revealElements.forEach((element) => observer.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("show"));
+}
+
+// تأثير الكتابة المتحركة
+const typingElement = document.getElementById("typing");
+const phrases = [
+  "Frontend Developer",
+  "HTML & CSS Learner",
+  "Web Design Enthusiast"
+];
+
+let phraseIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect() {
+  const phrase = phrases[phraseIndex];
+
+  if (deleting) {
+    charIndex--;
+  } else {
+    charIndex++;
+  }
+
+  typingElement.textContent = phrase.substring(0, charIndex);
+
+  let delay = deleting ? 45 : 90;
+
+  if (!deleting && charIndex === phrase.length) {
+    deleting = true;
+    delay = 1300;
+  } else if (deleting && charIndex === 0) {
+    deleting = false;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    delay = 350;
+  }
+
+  window.setTimeout(typeEffect, delay);
+}
+
+typeEffect();
+
+// زر الرجوع إلى أعلى الصفحة
+const topButton = document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 350) {
+    topButton.classList.add("visible");
+  } else {
+    topButton.classList.remove("visible");
+  }
+});
+
+topButton.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+</script>
 
 </body>
 </html>
