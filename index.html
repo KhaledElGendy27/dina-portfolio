@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="الموقع الشخصي لدينا محمد إبراهيم محمد، متعلمة تطوير واجهات الويب.">
+  <title>دينا محمد إبراهيم محمد | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="القائمة الرئيسية">
+      <a class="brand" href="#home">Dina<span>.</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">عني</a>
+        <a href="#projects">مشاريعي</a>
+        <a href="#values">اهتماماتي</a>
+        <a href="#contact">تواصل معي</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="تغيير الوضع">☀️ / 🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section container" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">متعلّمة تطوير واجهات الويب · Frontend Learner</p>
+        <h1>أهلًا، أنا<br><span>دينا محمد إبراهيم محمد</span></h1>
+        <p class="hero-text">طالبة في الفرقة الرابعة، أتعلم تطوير واجهات الويب وأسعى إلى بناء صفحات واضحة وسهلة الاستخدام، وتطوير مهاراتي من خلال التعلم والتطبيق العملي.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">استكشف نماذج التدريب</a>
+          <a class="btn secondary" href="#about">اعرف المزيد عني</a>
+        </div>
+        <div class="mini-facts">
+          <span>📚 الفرقة الرابعة</span>
+          <span>💻 أتعلم Frontend</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="تصميم زخرفي متعلق بالبرمجة">
+        <div class="code-card">
+          <div class="code-top"><i></i><i></i><i></i><span>hello-world.html</span></div>
+          <div class="code-lines">
+            <p><b>&lt;h1&gt;</b></p>
+            <p class="indent">مرحبًا، أنا دينا</p>
+            <p><b>&lt;/h1&gt;</b></p>
+            <p class="space"><em>/* أتعلم، أطبّق، أتطور */</em></p>
+            <p><strong>const</strong> goal = <mark>"Keep learning";</mark></p>
+          </div>
+          <div class="floating-tag tag-one">HTML</div>
+          <div class="floating-tag tag-two">CSS</div>
+          <div class="floating-tag tag-three">JavaScript</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt-section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">نبذة شخصية</p>
+          <h2>قصتي ونبذة عني</h2>
+          <p>خطواتي الأولى في مجال تطوير واجهات الويب، مع رغبة مستمرة في التعلم واكتساب الخبرة.</p>
+        </div>
+        <div class="about-grid">
+          <article class="panel about-main">
+            <h3>من أنا؟</h3>
+            <p>أنا دينا محمد إبراهيم محمد، في الفرقة الرابعة، وأتعلم حاليًا تطوير واجهات الويب (Frontend). أعمل على فهم أساسيات بناء صفحات الويب وتنسيقها، وأطمح إلى تحويل ما أتعلمه إلى تطبيقات عملية مفيدة.</p>
+            <p>ما زلت في مرحلة التعلم وتطوير المهارات، لذلك أعرض هنا نماذج تدريبية بوضوح، دون ادعاء خبرة عملية أو شهادات لم أحصل عليها.</p>
+          </article>
+          <div class="about-points">
+            <article class="panel point-card"><span class="point-icon">🎓</span><div><h3>الدراسة</h3><p>الفرقة الرابعة. لم تتم إضافة اسم التخصص أو المؤسسة لعدم توفرهما.</p></div></article>
+            <article class="panel point-card"><span class="point-icon">💻</span><div><h3>مساري في الويب</h3><p>أتعلم تطوير الواجهات وأعمل على تحسين فهمي لبناء صفحات الويب.</p></div></article>
+            <article class="panel point-card"><span class="point-icon">🌱</span><div><h3>التطور المستمر</h3><p>التعلم والتجربة والممارسة خطوات أساسية في رحلتي.</p></div></article>
+          </div>
+        </div>
+        <div class="skills-panel panel">
+          <div><h3>مجالات أتعلمها</h3><p>هذه مجالات للتعلم وليست تقييمًا لمستوى احترافي.</p></div>
+          <div class="skill-list"><span>HTML — قيد التعلم</span><span>CSS — قيد التعلم</span><span>JavaScript — قيد التعلم</span><span>تصميم صفحات متجاوبة — قيد التعلم</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="projects">
+      <div class="section-heading">
+        <p class="eyebrow">التطبيق العملي</p>
+        <h2>مشاريعي ونماذج التدريب</h2>
+        <p>أفكار تدريبية يمكن تطويرها مع التقدم في التعلم. لا تمثل هذه البطاقات مشاريع مكتملة أو أعمالًا لعملاء.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card panel">
+          <div class="project-visual visual-portfolio"><span class="visual-window">Dina Portfolio</span><div class="visual-bar"></div><div class="visual-blocks"><i></i><i></i><i></i></div></div>
+          <div class="project-content"><span class="status">نموذج الموقع الحالي</span><h3>Personal Portfolio</h3><p>موقع شخصي للتعريف بي وعرض مهاراتي التي أتعلمها ووسائل التواصل.</p><span class="tech">HTML · CSS · JavaScript</span></div>
+        </article>
+        <article class="project-card panel">
+          <div class="project-visual visual-hospital"><span class="cross">+</span><div class="hospital-lines"><i></i><i></i><i></i></div></div>
+          <div class="project-content"><span class="status">فكرة تدريبية</span><h3>واجهة نظام مستشفى</h3><p>تصور لواجهة تنظم عرض معلومات المواعيد والأقسام. يحتاج إلى تصميم وتنفيذ فعلي.</p><span class="tech">واجهة ويب</span></div>
+        </article>
+        <article class="project-card panel">
+          <div class="project-visual visual-store"><div class="store-top"></div><div class="store-products"><i></i><i></i><i></i></div><div class="store-button"></div></div>
+          <div class="project-content"><span class="status">فكرة تدريبية</span><h3>واجهة متجر إلكتروني</h3><p>فكرة للتدرب على ترتيب المنتجات وبطاقاتها وتصميم صفحة مناسبة للموبايل.</p><span class="tech">تصميم واجهات</span></div>
+        </article>
+      </div>
+      <p class="note">ملاحظة: النماذج المذكورة أفكار تدريبية معروضة للتوضيح، وليست ادعاءً بإنجاز مشاريع مكتملة.</p>
+    </section>
+
+    <section class="section alt-section" id="values">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">ما أؤمن به</p>
+          <h2>اهتماماتي في رحلة التعلم</h2>
+          <p>مبادئ أحرص على اتباعها أثناء تطوير مهاراتي.</p>
+        </div>
+        <div class="values-grid">
+          <article class="panel value-card"><span>📚</span><h3>التعلم المستمر</h3><p>أتعلم خطوة بخطوة وأحاول تطبيق المفاهيم بدل الاكتفاء بقراءتها.</p></article>
+          <article class="panel value-card"><span>🧩</span><h3>حل المشكلات</h3><p>أتعامل مع الأخطاء باعتبارها فرصة لفهم الكود بشكل أفضل.</p></article>
+          <article class="panel value-card"><span>🤝</span><h3>التعاون</h3><p>أقدّر تبادل المعرفة والاستفادة من الملاحظات لتحسين العمل.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="contact">
+      <div class="contact-panel panel">
+        <div><p class="eyebrow">للتواصل</p><h2>خلّينا نتواصل</h2><p>يمكنك التواصل عبر البريد الإلكتروني أو واتساب.</p></div>
+        <div class="contact-links">
+          <a class="btn primary" href="mailto:kaldhmohamed11@gmail.com">✉️ البريد الإلكتروني</a>
+          <a class="btn secondary" href="https://wa.me/201202855747" target="_blank" rel="noopener noreferrer">📱 واتساب</a>
+        </div>
+        <p class="contact-email">kaldhmohamed11@gmail.com</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner"><span>© <span id="year"></span> دينا محمد إبراهيم محمد</span><span>صُنع باستخدام HTML وCSS وJavaScript</span></div>
+  </footer>
+</body>
+</html>
