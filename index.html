@@ -1,139 +1,317 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="الموقع الشخصي لدينا محمد إبراهيم محمد، متعلمة تطوير واجهات الويب.">
-  <title>دينا محمد إبراهيم محمد | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090d">
+<meta name="description" content="Khaled Elgendy - Frontend Developer Portfolio">
+<title>Khaled Elgendy | Portfolio</title>
+
+<style>
+:root {
+  --bg: #09090d;
+  --panel: #12121a;
+  --panel2: #191923;
+  --text: #f5f5f7;
+  --muted: #a3a3b5;
+  --purple: #a78bfa;
+  --border: #292936;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.8;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+.container { width: min(1080px, 90%); margin: auto; }
+header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(9,9,13,.94);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+}
+nav {
+  min-height: 76px; display: flex; align-items: center;
+  justify-content: space-between; gap: 20px;
+}
+.logo { font-size: 23px; font-weight: 800; direction: ltr; }
+.purple { color: var(--purple); }
+.navlinks { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.navlinks a { font-size: 13px; color: var(--muted); }
+.navlinks a:hover, .navlinks a.active { color: var(--purple); }
+.lang-btn {
+  border: 1px solid var(--border); background: var(--panel);
+  color: var(--text); padding: 7px 12px; border-radius: 8px; cursor: pointer;
+}
+.hero {
+  min-height: 590px; padding: 80px 0;
+  display: grid; grid-template-columns: 1.25fr .75fr;
+  align-items: center; gap: 50px;
+}
+.eyebrow {
+  display: inline-block; border: 1px solid #514174;
+  background: #21182f; color: #d5c8ff;
+  border-radius: 30px; padding: 5px 14px;
+  font-size: 13px; margin-bottom: 20px;
+}
+h1 { font-size: clamp(38px,6vw,65px); line-height: 1.2; margin-bottom: 20px; }
+.hero p { color: var(--muted); max-width: 570px; margin-bottom: 28px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; border: 1px solid var(--border);
+  padding: 10px 20px; border-radius: 9px; font-size: 14px;
+  font-weight: bold; transition: .2s;
+}
+.btn:hover { transform: translateY(-3px); }
+.btn-primary { background: var(--purple); color: #100b1c; border-color: var(--purple); }
+.avatar-wrap { text-align: center; }
+.avatar {
+  width: 245px; height: 245px; border-radius: 30px;
+  border: 1px solid #514174;
+  background: linear-gradient(145deg,#302342,#12121a);
+  display: flex; align-items: center; justify-content: center;
+  margin: auto; font-size: 70px; font-weight: 800; color: var(--purple);
+  box-shadow: 0 0 80px #a78bfa12;
+}
+.avatar-note { color: var(--muted); font-size: 12px; margin-top: 14px; }
+section { padding: 82px 0; border-top: 1px solid #1c1c25; }
+.section-head { margin-bottom: 32px; }
+.section-title { font-size: 34px; margin-bottom: 5px; }
+.section-desc { color: var(--muted); font-size: 14px; }
+.grid { display: grid; gap: 18px; }
+.two { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.three { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.card {
+  padding: 24px; border-radius: 15px;
+  background: var(--panel); border: 1px solid var(--border);
+  transition: transform .2s,border-color .2s;
+}
+.card:hover { transform: translateY(-4px); border-color: #6d529d; }
+.card h3 { margin-bottom: 9px; font-size: 18px; }
+.card p { color: var(--muted); font-size: 14px; }
+.icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 43px; height: 43px; border-radius: 12px;
+  background: #241b34; color: var(--purple);
+  font-weight: bold; margin-bottom: 17px;
+}
+.skill-top { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.skill-top span { color: var(--purple); font-size: 12px; }
+.project-label { color: var(--purple); font-size: 12px; }
+.project-card h3 { margin-top: 9px; }
+.project-links { display: flex; gap: 18px; margin-top: 18px; font-size: 13px; }
+.project-links a { color: var(--purple); }
+.project-links a:hover { text-decoration: underline; }
+.notice {
+  border: 1px solid #514174; background: #171321;
+  color: #cfc4e8; border-radius: 10px;
+  padding: 12px 15px; font-size: 13px; margin-bottom: 20px;
+}
+.resume {
+  padding: 38px; border-radius: 18px; text-align: center;
+  background: var(--panel); border: 1px solid var(--border);
+}
+.resume p { color: var(--muted); margin: 12px auto 22px; max-width: 620px; }
+.contact-item { overflow-wrap: anywhere; }
+.contact-item small { display: block; color: var(--muted); margin-bottom: 5px; }
+.contact-item a { color: var(--purple); }
+footer {
+  border-top: 1px solid var(--border); padding: 25px 0;
+  text-align: center; color: var(--muted); font-size: 13px;
+}
+[dir="ltr"] .hero, [dir="ltr"] .card { text-align: left; }
+[dir="ltr"] .section-head { text-align: left; }
+[dir="ltr"] .navlinks { direction: ltr; }
+[dir="ltr"] .hero p { margin-right: 0; }
+[dir="ltr"] .actions, [dir="ltr"] .project-links { justify-content: flex-start; }
+
+@media(max-width:760px) {
+  nav { padding: 14px 0; align-items: flex-start; flex-wrap: wrap; }
+  .navlinks { gap: 10px 15px; }
+  .hero { grid-template-columns: 1fr; text-align: center; gap: 35px; padding: 60px 0; }
+  .hero p { margin-left: auto; margin-right: auto; }
+  .actions { justify-content: center; }
+  .avatar { width: 190px; height: 190px; font-size: 56px; }
+  .two, .three { grid-template-columns: 1fr; }
+  section { padding: 60px 0; }
+  .section-title { font-size: 29px; }
+  .resume { padding: 28px 18px; }
+  [dir="ltr"] .hero { text-align: center; }
+  [dir="ltr"] .hero p { margin-left: auto; margin-right: auto; }
+  [dir="ltr"] .actions { justify-content: center; }
+}
+</style>
 </head>
+
 <body>
-  <header class="site-header">
-    <nav class="nav container" aria-label="القائمة الرئيسية">
-      <a class="brand" href="#home">Dina<span>.</span></a>
-      <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a href="#home">الرئيسية</a>
-        <a href="#about">عني</a>
-        <a href="#projects">مشاريعي</a>
-        <a href="#values">اهتماماتي</a>
-        <a href="#contact">تواصل معي</a>
-      </div>
-      <button class="theme-toggle" id="themeToggle" aria-label="تغيير الوضع">☀️ / 🌙</button>
-    </nav>
-  </header>
+<header>
+  <nav class="container">
+    <a class="logo" href="#home">Khaled<span class="purple">.</span></a>
+    <div class="navlinks">
+      <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+      <a href="#about" data-ar="عني" data-en="About">عني</a>
+      <a href="#skills" data-ar="المهارات" data-en="Skills">المهارات</a>
+      <a href="#projects" data-ar="المشاريع" data-en="Projects">المشاريع</a>
+      <a href="#resume" data-ar="السيرة الذاتية" data-en="Resume">السيرة الذاتية</a>
+      <a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
+      <button class="lang-btn" id="langBtn" type="button">English</button>
+    </div>
+  </nav>
+</header>
 
-  <main>
-    <section class="hero section container" id="home">
-      <div class="hero-copy">
-        <p class="eyebrow">متعلّمة تطوير واجهات الويب · Frontend Learner</p>
-        <h1>أهلًا، أنا<br><span>دينا محمد إبراهيم محمد</span></h1>
-        <p class="hero-text">طالبة في الفرقة الرابعة، أتعلم تطوير واجهات الويب وأسعى إلى بناء صفحات واضحة وسهلة الاستخدام، وتطوير مهاراتي من خلال التعلم والتطبيق العملي.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#projects">استكشف نماذج التدريب</a>
-          <a class="btn secondary" href="#about">اعرف المزيد عني</a>
-        </div>
-        <div class="mini-facts">
-          <span>📚 الفرقة الرابعة</span>
-          <span>💻 أتعلم Frontend</span>
-        </div>
+<main>
+  <div class="container hero" id="home">
+    <div>
+      <span class="eyebrow" data-ar="مطور واجهات ويب" data-en="Frontend Developer">مطور واجهات ويب</span>
+      <h1>
+        <span data-ar="أهلاً، أنا" data-en="Hi, I'm">أهلاً، أنا</span>
+        <span class="purple" data-ar="خالد الجندي" data-en="Khaled Elgendy">خالد الجندي</span>
+      </h1>
+      <p data-ar="طالب بالفرقة الرابعة في معهد الدلتا العالي، مهتم بتطوير واجهات المواقع وبناء تجارب استخدام عصرية وسريعة ومتوافقة مع مختلف الشاشات. أعمل باستمرار على تطوير مهاراتي وبناء مشروعات عملية." data-en="A fourth-year student at Delta Higher Institute, interested in frontend development and building modern, responsive user experiences. I am continuously improving my skills through practical projects.">
+        طالب بالفرقة الرابعة في معهد الدلتا العالي، مهتم بتطوير واجهات المواقع وبناء تجارب استخدام عصرية وسريعة ومتوافقة مع مختلف الشاشات. أعمل باستمرار على تطوير مهاراتي وبناء مشروعات عملية.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#projects" data-ar="شاهد مشاريعي ↙" data-en="View Projects ↙">شاهد مشاريعي ↙</a>
+        <a class="btn" href="#contact" data-ar="تواصل معي" data-en="Contact Me">تواصل معي</a>
       </div>
-      <div class="hero-art" aria-label="تصميم زخرفي متعلق بالبرمجة">
-        <div class="code-card">
-          <div class="code-top"><i></i><i></i><i></i><span>hello-world.html</span></div>
-          <div class="code-lines">
-            <p><b>&lt;h1&gt;</b></p>
-            <p class="indent">مرحبًا، أنا دينا</p>
-            <p><b>&lt;/h1&gt;</b></p>
-            <p class="space"><em>/* أتعلم، أطبّق، أتطور */</em></p>
-            <p><strong>const</strong> goal = <mark>"Keep learning";</mark></p>
+    </div>
+    <div class="avatar-wrap">
+      <div class="avatar" aria-label="Khaled Elgendy">KE</div>
+      <p class="avatar-note" data-ar="أضف صورتك الشخصية بدل الشعار عند توفرها" data-en="Replace this monogram with your profile photo when available">أضف صورتك الشخصية بدل الشعار عند توفرها</p>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title" data-ar="نبذة <span class='purple'>عني</span>" data-en="About <span class='purple'>Me</span>">نبذة <span class="purple">عني</span></h2>
+        <p class="section-desc" data-ar="تعرف على خلفيتي واهتماماتي." data-en="A little about my background and interests.">تعرف على خلفيتي واهتماماتي.</p>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <div class="icon">01</div>
+          <h3 data-ar="من أنا؟" data-en="Who Am I?">من أنا؟</h3>
+          <p data-ar="أنا خالد محمد معوض خليل، طالب بالفرقة الرابعة في معهد الدلتا العالي. أهتم بتطوير الويب وتصميم واجهات سهلة الاستخدام، وأسعى إلى تحويل الأفكار إلى صفحات منظمة ومتجاوبة." data-en="I am Khaled Mohamed Moawad Khalil, a fourth-year student at Delta Higher Institute. I am interested in web development and building clean, user-friendly, responsive interfaces.">
+            أنا خالد محمد معوض خليل، طالب بالفرقة الرابعة في معهد الدلتا العالي. أهتم بتطوير الويب وتصميم واجهات سهلة الاستخدام، وأسعى إلى تحويل الأفكار إلى صفحات منظمة ومتجاوبة.
+          </p>
+        </article>
+        <article class="card">
+          <div class="icon">02</div>
+          <h3 data-ar="هدفي" data-en="My Goal">هدفي</h3>
+          <p data-ar="تطوير مهاراتي في HTML وCSS وJavaScript، وبناء مشاريع عملية تساعدني على التقدم في مجال Frontend Development." data-en="To strengthen my HTML, CSS, and JavaScript skills and build practical projects as I progress in frontend development.">
+            تطوير مهاراتي في HTML وCSS وJavaScript، وبناء مشاريع عملية تساعدني على التقدم في مجال Frontend Development.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title" data-ar="المهارات <span class='purple'>التقنية</span>" data-en="Technical <span class='purple'>Skills</span>">المهارات <span class="purple">التقنية</span></h2>
+        <p class="section-desc" data-ar="التقنيات التي أتعلمها وأطور مستواي فيها." data-en="Technologies I am learning and practicing.">التقنيات التي أتعلمها وأطور مستواي فيها.</p>
+      </div>
+      <div class="grid three">
+        <article class="card"><div class="icon">H</div><div class="skill-top"><h3>HTML5</h3><span data-ar="تدريب" data-en="Practice">تدريب</span></div><p data-ar="بناء هيكل صفحات الويب." data-en="Structuring web pages.">بناء هيكل صفحات الويب.</p></article>
+        <article class="card"><div class="icon">C</div><div class="skill-top"><h3>CSS3</h3><span data-ar="تدريب" data-en="Practice">تدريب</span></div><p data-ar="التنسيق والتصميم المتجاوب." data-en="Styling and responsive layouts.">التنسيق والتصميم المتجاوب.</p></article>
+        <article class="card"><div class="icon">JS</div><div class="skill-top"><h3>JavaScript</h3><span data-ar="قيد التعلم" data-en="Learning">قيد التعلم</span></div><p data-ar="إضافة التفاعل للصفحات." data-en="Adding interactivity to pages.">إضافة التفاعل للصفحات.</p></article>
+        <article class="card"><div class="icon">B</div><div class="skill-top"><h3>Bootstrap</h3><span data-ar="قيد التعلم" data-en="Learning">قيد التعلم</span></div><p data-ar="تطوير واجهات متجاوبة." data-en="Building responsive interfaces.">تطوير واجهات متجاوبة.</p></article>
+        <article class="card"><div class="icon">G</div><div class="skill-top"><h3>Git & GitHub</h3><span data-ar="تدريب" data-en="Practice">تدريب</span></div><p data-ar="إدارة ملفات المشاريع ونشرها." data-en="Managing and publishing project files.">إدارة ملفات المشاريع ونشرها.</p></article>
+        <article class="card"><div class="icon">UI</div><div class="skill-top"><h3>Responsive UI</h3><span data-ar="تدريب" data-en="Practice">تدريب</span></div><p data-ar="تحسين تجربة الاستخدام على الشاشات المختلفة." data-en="Improving usability across screen sizes.">تحسين تجربة الاستخدام على الشاشات المختلفة.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title" data-ar="مشاريعي <span class='purple'>المختارة</span>" data-en="Selected <span class='purple'>Projects</span>">مشاريعي <span class="purple">المختارة</span></h2>
+        <p class="section-desc" data-ar="نماذج تدريبية وأفكار قيد التطوير." data-en="Practice work and ideas in development.">نماذج تدريبية وأفكار قيد التطوير.</p>
+      </div>
+      <div class="notice" data-ar="ملاحظة: وضعت حالة المشاريع بوضوح. حدّث هذه البيانات بعد اكتمال كل مشروع." data-en="Note: Project status is stated clearly. Update these details as your projects progress.">
+        ملاحظة: وضعت حالة المشاريع بوضوح. حدّث هذه البيانات بعد اكتمال كل مشروع.
+      </div>
+      <div class="grid two">
+        <article class="card project-card">
+          <span class="project-label">01 / Portfolio</span>
+          <h3 data-ar="موقعي الشخصي" data-en="Personal Portfolio">موقعي الشخصي</h3>
+          <p data-ar="موقع للتعريف بي وعرض مهاراتي وروابط مشاريعي ووسائل التواصل." data-en="A personal website presenting my profile, skills, projects, and contact details.">موقع للتعريف بي وعرض مهاراتي وروابط مشاريعي ووسائل التواصل.</p>
+          <div class="project-links">
+            <a href="https://github.com/KhaledElGendy27/dina-portfolio" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-          <div class="floating-tag tag-one">HTML</div>
-          <div class="floating-tag tag-two">CSS</div>
-          <div class="floating-tag tag-three">JavaScript</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt-section" id="about">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">نبذة شخصية</p>
-          <h2>قصتي ونبذة عني</h2>
-          <p>خطواتي الأولى في مجال تطوير واجهات الويب، مع رغبة مستمرة في التعلم واكتساب الخبرة.</p>
-        </div>
-        <div class="about-grid">
-          <article class="panel about-main">
-            <h3>من أنا؟</h3>
-            <p>أنا دينا محمد إبراهيم محمد، في الفرقة الرابعة، وأتعلم حاليًا تطوير واجهات الويب (Frontend). أعمل على فهم أساسيات بناء صفحات الويب وتنسيقها، وأطمح إلى تحويل ما أتعلمه إلى تطبيقات عملية مفيدة.</p>
-            <p>ما زلت في مرحلة التعلم وتطوير المهارات، لذلك أعرض هنا نماذج تدريبية بوضوح، دون ادعاء خبرة عملية أو شهادات لم أحصل عليها.</p>
-          </article>
-          <div class="about-points">
-            <article class="panel point-card"><span class="point-icon">🎓</span><div><h3>الدراسة</h3><p>الفرقة الرابعة. لم تتم إضافة اسم التخصص أو المؤسسة لعدم توفرهما.</p></div></article>
-            <article class="panel point-card"><span class="point-icon">💻</span><div><h3>مساري في الويب</h3><p>أتعلم تطوير الواجهات وأعمل على تحسين فهمي لبناء صفحات الويب.</p></div></article>
-            <article class="panel point-card"><span class="point-icon">🌱</span><div><h3>التطور المستمر</h3><p>التعلم والتجربة والممارسة خطوات أساسية في رحلتي.</p></div></article>
+        </article>
+        <article class="card project-card">
+          <span class="project-label">02 / Concept</span>
+          <h3>Khaled Food</h3>
+          <p data-ar="فكرة منصة تجريبية لعرض المطاعم والمتاجر والمنتجات الغذائية. المشروع قيد التطوير وليس خدمة طلبات فعلية بعد." data-en="A concept for a food platform featuring restaurants, shops, and food products. It is in development and does not yet process real orders.">فكرة منصة تجريبية لعرض المطاعم والمتاجر والمنتجات الغذائية. المشروع قيد التطوير وليس خدمة طلبات فعلية بعد.</p>
+          <div class="project-links">
+            <a href="https://github.com/KhaledElGendy27" target="_blank" rel="noopener" data-ar="حساب GitHub ↗" data-en="GitHub Profile ↗">حساب GitHub ↗</a>
           </div>
-        </div>
-        <div class="skills-panel panel">
-          <div><h3>مجالات أتعلمها</h3><p>هذه مجالات للتعلم وليست تقييمًا لمستوى احترافي.</p></div>
-          <div class="skill-list"><span>HTML — قيد التعلم</span><span>CSS — قيد التعلم</span><span>JavaScript — قيد التعلم</span><span>تصميم صفحات متجاوبة — قيد التعلم</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section container" id="projects">
-      <div class="section-heading">
-        <p class="eyebrow">التطبيق العملي</p>
-        <h2>مشاريعي ونماذج التدريب</h2>
-        <p>أفكار تدريبية يمكن تطويرها مع التقدم في التعلم. لا تمثل هذه البطاقات مشاريع مكتملة أو أعمالًا لعملاء.</p>
-      </div>
-      <div class="project-grid">
-        <article class="project-card panel">
-          <div class="project-visual visual-portfolio"><span class="visual-window">Dina Portfolio</span><div class="visual-bar"></div><div class="visual-blocks"><i></i><i></i><i></i></div></div>
-          <div class="project-content"><span class="status">نموذج الموقع الحالي</span><h3>Personal Portfolio</h3><p>موقع شخصي للتعريف بي وعرض مهاراتي التي أتعلمها ووسائل التواصل.</p><span class="tech">HTML · CSS · JavaScript</span></div>
-        </article>
-        <article class="project-card panel">
-          <div class="project-visual visual-hospital"><span class="cross">+</span><div class="hospital-lines"><i></i><i></i><i></i></div></div>
-          <div class="project-content"><span class="status">فكرة تدريبية</span><h3>واجهة نظام مستشفى</h3><p>تصور لواجهة تنظم عرض معلومات المواعيد والأقسام. يحتاج إلى تصميم وتنفيذ فعلي.</p><span class="tech">واجهة ويب</span></div>
-        </article>
-        <article class="project-card panel">
-          <div class="project-visual visual-store"><div class="store-top"></div><div class="store-products"><i></i><i></i><i></i></div><div class="store-button"></div></div>
-          <div class="project-content"><span class="status">فكرة تدريبية</span><h3>واجهة متجر إلكتروني</h3><p>فكرة للتدرب على ترتيب المنتجات وبطاقاتها وتصميم صفحة مناسبة للموبايل.</p><span class="tech">تصميم واجهات</span></div>
         </article>
       </div>
-      <p class="note">ملاحظة: النماذج المذكورة أفكار تدريبية معروضة للتوضيح، وليست ادعاءً بإنجاز مشاريع مكتملة.</p>
-    </section>
+    </div>
+  </section>
 
-    <section class="section alt-section" id="values">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">ما أؤمن به</p>
-          <h2>اهتماماتي في رحلة التعلم</h2>
-          <p>مبادئ أحرص على اتباعها أثناء تطوير مهاراتي.</p>
-        </div>
-        <div class="values-grid">
-          <article class="panel value-card"><span>📚</span><h3>التعلم المستمر</h3><p>أتعلم خطوة بخطوة وأحاول تطبيق المفاهيم بدل الاكتفاء بقراءتها.</p></article>
-          <article class="panel value-card"><span>🧩</span><h3>حل المشكلات</h3><p>أتعامل مع الأخطاء باعتبارها فرصة لفهم الكود بشكل أفضل.</p></article>
-          <article class="panel value-card"><span>🤝</span><h3>التعاون</h3><p>أقدّر تبادل المعرفة والاستفادة من الملاحظات لتحسين العمل.</p></article>
-        </div>
+  <section id="resume">
+    <div class="container">
+      <div class="resume">
+        <h2 class="section-title" data-ar="السيرة <span class='purple'>الذاتية</span>" data-en="My <span class='purple'>Resume</span>">السيرة <span class="purple">الذاتية</span></h2>
+        <p data-ar="ملف السيرة الذاتية قابل للإضافة هنا بعد تجهيزه. لم تتم إضافة ملف وهمي." data-en="A real CV file can be linked here once prepared. No placeholder document has been added.">ملف السيرة الذاتية قابل للإضافة هنا بعد تجهيزه. لم تتم إضافة ملف وهمي.</p>
+        <a href="#contact" class="btn btn-primary" data-ar="تواصل معي" data-en="Contact Me">تواصل معي</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section container" id="contact">
-      <div class="contact-panel panel">
-        <div><p class="eyebrow">للتواصل</p><h2>خلّينا نتواصل</h2><p>يمكنك التواصل عبر البريد الإلكتروني أو واتساب.</p></div>
-        <div class="contact-links">
-          <a class="btn primary" href="mailto:kaldhmohamed11@gmail.com">✉️ البريد الإلكتروني</a>
-          <a class="btn secondary" href="https://wa.me/201202855747" target="_blank" rel="noopener noreferrer">📱 واتساب</a>
-        </div>
-        <p class="contact-email">kaldhmohamed11@gmail.com</p>
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title" data-ar="لنتواصل <span class='purple'>معًا</span>" data-en="Let's <span class='purple'>Connect</span>">لنتواصل <span class="purple">معًا</span></h2>
+        <p class="section-desc" data-ar="يمكنك التواصل معي عبر البريد الإلكتروني أو GitHub." data-en="Reach me by email or through GitHub.">يمكنك التواصل معي عبر البريد الإلكتروني أو GitHub.</p>
       </div>
-    </section>
-  </main>
+      <div class="grid two">
+        <article class="card contact-item">
+          <small data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</small>
+          <a href="mailto:kaldhmohamed11@gmail.com">kaldhmohamed11@gmail.com</a>
+        </article>
+        <article class="card contact-item">
+          <small>GitHub</small>
+          <a href="https://github.com/KhaledElGendy27" target="_blank" rel="noopener">KhaledElGendy27 ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner"><span>© <span id="year"></span> دينا محمد إبراهيم محمد</span><span>صُنع باستخدام HTML وCSS وJavaScript</span></div>
-  </footer>
+<footer>
+  <div class="container">
+    <span data-ar="© 2026 خالد الجندي — جميع الحقوق محفوظة." data-en="© 2026 Khaled Elgendy — All rights reserved.">© 2026 خالد الجندي — جميع الحقوق محفوظة.</span>
+  </div>
+</footer>
+
+<script>
+const langBtn = document.getElementById("langBtn");
+let currentLang = "ar";
+
+langBtn.addEventListener("click", () => {
+  currentLang = currentLang === "ar" ? "en" : "ar";
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+  langBtn.textContent = currentLang === "ar" ? "English" : "العربية";
+
+  document.querySelectorAll("[data-ar][data-en]").forEach(element => {
+    const value = element.dataset[currentLang];
+    if (value.includes("<span")) {
+      element.innerHTML = value;
+    } else {
+      element.textContent = value;
+    }
+  });
+});
+</script>
 </body>
-</html>
+                                </html>
